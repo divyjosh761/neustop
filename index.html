@@ -1,221 +1,232 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neumorphic Stopwatch</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        body {
-            background-color: #e0e5ec;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        #stopwatch {
-            background-color: #e0e5ec;
-            border-radius: 20px;
-            box-shadow: 9px 9px 16px #b8b9be, 
-                        -9px -9px 16px #ffffff;
-            padding: 25px;
-            text-align: center;
-            width: 300px;
-        }
-
-        #display {
-            font-size: 2em;
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #e0e5ec;
-            border-radius: 10px;
-            box-shadow: inset 8px 8px 15px #a3b1c6, 
-                        inset -8px -8px 15px #ffffff;
-        }
-
-        button {
-            background-color: #e0e5ec;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px;
-            padding: 10px 20px;
-            box-shadow: 5px 5px 10px #a3b1c6, 
-                        -5px -5px 10px #ffffff;
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        button:hover {
-            box-shadow: inset 5px 5px 10px #a3b1c6, 
-                        inset -5px -5px 10px #ffffff;
-        }
-
-        button:active {
-            animation: vibrate 0.3s linear;
-            animation-iteration-count: 1;
-        }
-
-        @keyframes vibrate {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
-        
-#footer {
-    margin-top: 20px; /* Adjust the margin as needed */
-    background-color: #e0e5ec;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 5px 5px 10px #b8b9be, -5px -5px 10px #ffffff;
-    transition: box-shadow 0.3s ease-in-out;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch</title>
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
 }
 
-#footer a {
-    display: inline-block;
-    background-color: #e0e5ec;
-    color: #555;
-    text-decoration: none;
-    padding: 15px 30px; /* Adjust padding as needed */
-    margin: 10px;
-    border-radius: 10px;
-    font-size: 16px;
-    box-shadow: 5px 5px 10px #b8b9be, -5px -5px 10px #ffffff;
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-#footer a:hover {
-    box-shadow: inset 5px 5px 10px #b8b9be, inset -5px -5px 10px #ffffff;
+.stopwatch {
+  font-size: 3rem;
+  margin: 50px auto;
+  color: #4CAF50; /* Green color for emphasis */
+  text-align: center; /* Center the text */
 }
 
 
-    </style>
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 5px auto; /* Center the button horizontally */
+  border: none;
+  background-color: #f7f7f7; /* Light background color */
+  color: #4CAF50; /* Green text color */
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1),
+              -4px -4px 8px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+
+button:hover {
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1),
+              -6px -6px 12px rgba(255, 255, 255, 0.5);
+}
+
+#lapTimes {
+  text-align: left;
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+#lapTimes div {
+  margin-bottom: 5px;
+}
+/* CSS for the container holding the buttons */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CSS for the first row of buttons */
+.button-row:first-child {
+  margin-bottom: 10px; /* Add some space between the rows */
+}
+
+/* CSS for each button */
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 5px;
+  border: none;
+  background-color: #f7f7f7; /* Light background color */
+  color: #4CAF50; /* Green text color */
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1),
+              -4px -4px 8px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-row {
+  margin-bottom: 10px; /* Add some space between the rows */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 5px;
+  border: none;
+  background-color: #f7f7f7; /* Light background color */
+  color: #4CAF50; /* Green text color */
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1),
+              -4px -4px 8px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+#lapTimes {
+  text-align: left;
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+#lapTimes div {
+  margin-bottom: 5px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #f7f7f7; /* Light background color */
+  padding: 20px; /* Add padding for spacing */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 6px 6px 12px rgba107, 240, 2),
+              -6px -6px 12px rgba(107, 240, 2); /* Soft neumorphic shadow */
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  color: #4CAF50; /* Green text color */
+  margin: 0; /* Remove default margin for cleaner look */
+}
+
+
+
+</style>
 </head>
 <body>
+    <div class="header">
+  <h1>Neu Stopwatch</h1>
+</div>
 
-<h1>Neumorphic Stopwatch</h1>
-
-<div id="stopwatch">
-    <div id="display">00:00:00</div>
-    <button id="startButton"><i class="fas fa-play"></i> Start</button>
-    <button id="resetButton"><i class="fas fa-redo"></i> Reset</button>
+<div class="stopwatch">00:00:00</div>
+<div class="button-container">
+  <div class="button-row">
+    <button id="startStopBtn">Start</button>
+    <button id="lapBtn">Lap</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+  <div class="button-row">
+    <button id="clearLapsBtn">Clear Laps</button>
+    <button id="showLapsBtn">Show Laps</button>
+  </div>
+  <div id="lapTimes"></div>
 </div>
 
 
 
-
 <script>
-// Define variables to hold time values
-let hours = 0;
-let minutes = 0;
-let seconds = 0;
+  let timer;
+  let hours = 0, minutes = 0, seconds = 0;
+  let display = document.querySelector('.stopwatch');
+  let lapTimes = [];
+  let lapsDisplay = document.getElementById('lapTimes');
 
-// Define vars to hold "display" value
-let displayHours = 0;
-let displayMinutes = 0;
-let displaySeconds = 0;
+  function startStopwatch() {
+    timer = setInterval(updateStopwatch, 1000);
+    document.getElementById('startStopBtn').textContent = 'Stop';
+    document.getElementById('startStopBtn').removeEventListener('click', startStopwatch);
+    document.getElementById('startStopBtn').addEventListener('click', stopStopwatch);
+  }
 
-// Define variable to hold setInterval() function
-let interval = null;
+  function stopStopwatch() {
+    clearInterval(timer);
+    document.getElementById('startStopBtn').textContent = 'Start';
+    document.getElementById('startStopBtn').removeEventListener('click', stopStopwatch);
+    document.getElementById('startStopBtn').addEventListener('click', startStopwatch);
+  }
 
-// Define variable to hold stopwatch status
-let status = "stopped";
-
-// Stopwatch function (logic to determine when to increment next value, etc.)
-function stopWatch() {
-    seconds++;
-
-    // Logic to determine when to increment next value
-    if (seconds / 60 === 1) {
-        seconds = 0;
-        minutes++;
-
-        if (minutes / 60 === 1) {
-            minutes = 0;
-            hours++;
-        }
-    }
-
-    // If seconds/minutes/hours are only one digit, add a leading 0 to the value
-    if (seconds < 10) {
-        displaySeconds = "0" + seconds.toString();
-    } else {
-        displaySeconds = seconds;
-    }
-
-    if (minutes < 10) {
-        displayMinutes = "0" + minutes.toString();
-    } else {
-        displayMinutes = minutes;
-    }
-
-    if (hours < 10) {
-        displayHours = "0" + hours.toString();
-    } else {
-        displayHours = hours;
-    }
-
-    // Display updated time values to user
-    document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
-}
-
-function startStop() {
-    if (status === "stopped") {
-        // Start the stopwatch (by calling the setInterval() function)
-        interval = window.setInterval(stopWatch, 1000);
-        document.getElementById("startButton").innerHTML = "Stop";
-        status = "started";
-    } else {
-        window.clearInterval(interval);
-        document.getElementById("startButton").innerHTML = "Start";
-        status = "stopped";
-    }
-}
-
-function reset() {
-    window.clearInterval(interval);
-    seconds = 0;
-    minutes = 0;
+  function resetStopwatch() {
+    clearInterval(timer);
     hours = 0;
-    document.getElementById("display").innerHTML = "00:00:00";
-    document.getElementById("startButton").innerHTML = "Start";
-    status = "stopped";
-}
+    minutes = 0;
+    seconds = 0;
+    display.textContent = '00:00:00';
+    lapTimes = [];
+    lapsDisplay.innerHTML = '';
+    document.getElementById('startStopBtn').textContent = 'Start';
+    document.getElementById('startStopBtn').removeEventListener('click', stopStopwatch);
+    document.getElementById('startStopBtn').addEventListener('click', startStopwatch);
+  }
 
-// Event listeners for buttons
-document.getElementById("startButton").addEventListener("click", startStop);
-document.getElementById("resetButton").addEventListener("click", reset);
+  function updateStopwatch() {
+    seconds++;
+    if (seconds >= 60) {
+      seconds = 0;
+      minutes++;
+      if (minutes >= 60) {
+        minutes = 0;
+        hours++;
+      }
+    }
+    display.textContent = (hours < 10 ? "0" + hours : hours) + ":" +
+                           (minutes < 10 ? "0" + minutes : minutes) + ":" +
+                           (seconds < 10 ? "0" + seconds : seconds);
+  }
 
-<script>
-    // Assuming you have a screenshot functionality
-    document.getElementById("screenshotButton").addEventListener("click", function() {
-        // Add your screenshot functionality here
-        alert("Screenshot functionality will go here.");
+  function recordLap() {
+    lapTimes.push(display.textContent);
+    updateLapsDisplay();
+  }
+
+  function clearLaps() {
+    lapTimes = [];
+    updateLapsDisplay();
+  }
+
+  function showLaps() {
+    updateLapsDisplay();
+  }
+
+  function updateLapsDisplay() {
+    lapsDisplay.innerHTML = '';
+    lapTimes.forEach(function(time, index) {
+      let lapItem = document.createElement('div');
+      lapItem.textContent = 'Lap ' + (index + 1) + ': ' + time;
+      lapsDisplay.appendChild(lapItem);
     });
+  }
 
-    // Assuming you have a share functionality
-    document.getElementById("shareButton").addEventListener("click", function() {
-        // Add your share functionality here
-        alert("Share to multiple apps functionality will go here.");
-    });
+  document.getElementById('startStopBtn').addEventListener('click', startStopwatch);
+  document.getElementById('lapBtn').addEventListener('click', recordLap);
+  document.getElementById('resetBtn').addEventListener('click', resetStopwatch);
+  document.getElementById('clearLapsBtn').addEventListener('click', clearLaps);
+  document.getElementById('showLapsBtn').addEventListener('click', showLaps);
 </script>
 
-
-</script>
 </body>
 </html>
